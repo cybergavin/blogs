@@ -1,0 +1,55 @@
+title AWS Deployment from GitHub
+// Define groups and nodes
+Bootstrap_Provisioning [label: "Infrastructure Provisioning"] {
+  Infra_Repo [icon: github, label: "Platform Repo"]
+}
+
+Deployment [label: "Service Deployment"] {
+  App_Repo_A [icon: github, label: "Repo — service-a"]
+  App_Repo_B [icon: github, label: "Repo — service-b"]
+}
+
+AWS_Account [label: "AWS Account (multi-service)"] {
+  OIDC_Provider [icon: aws-iam, label: "GitHub OIDC Identity Provider"]
+  Policies_A [icon: aws-iam, label: "IAM Policies — service-a"]
+  Policies_B [icon: aws-iam, label: "IAM Policies — service-b"]
+  Role_A [icon: aws-iam, label: "IAM Role — service-a"]
+  Role_B [icon: aws-iam, label: "IAM Role — service-b"]
+  SSM_Params [icon: aws-ssm, label: "SSM Parameter Store\n(/<org>/<env>/<platform>/...)"]
+  Resources_A [label: "Resources - service-a"] {
+    EC2_A [icon: aws-ec2]
+    ECS_A [icon: aws-ecs]
+    ECR_A [icon: aws-ecr]
+    LAMBDA_A [icon: aws-lambda]
+  }
+
+  Resources_B [label: "Resources - service-b"] {
+    EC2_B [icon: aws-ec2]
+    ECS_B [icon: aws-ecs]
+    ECR_B [icon: aws-ecr]
+    LAMBDA_B [icon: aws-lambda]
+  }
+}
+
+// Define connections
+Infra_Repo > OIDC_Provider: "[1] provisions" [color: "green", style: "solid"]
+Infra_Repo > Policies_A: "[1] provisions" [color: "green", style: "solid"]
+Infra_Repo > Policies_B: "[1] provisions" [color: "green", style: "solid"]
+Infra_Repo > Role_A: "[1] provisions" [color: "green", style: "solid"]
+Infra_Repo > Role_B: "[1] provisions" [color: "green", style: "solid"]
+Infra_Repo > SSM_Params: "[1] provisions" [color: "green", style: "solid"]
+
+OIDC_Provider -- Role_A: "trust relationship" [color: "red", style: "dashed"]
+OIDC_Provider -- Role_B: "trust relationship" [color: "red", style: "dashed"]
+Policies_A -- Role_A: "attached policies" [color: "orange", style: "dashed"]
+Policies_B -- Role_B: "attached policies" [color: "orange", style: "dashed"]
+
+App_Repo_A > SSM_Params: "[4] Reads Resource Metadata" [color: "purple", style: "solid"]
+App_Repo_B > SSM_Params: "[4] Reads Resource Metadata" [color: "purple", style: "solid"]
+App_Repo_A > Infra_Repo: "[2] Reads IAM Role ARN" [color: "purple", style: "solid"]
+App_Repo_B > Infra_Repo: "[2] Reads IAM Role ARN" [color: "purple", style: "solid"]
+App_Repo_A > Role_A: "[3] Assume via OIDC" [color: "purple", style: "solid"]
+App_Repo_B > Role_B: "[3] Assume via OIDC" [color: "purple", style: "solid"]
+App_Repo_A > Resources_A: "[5] Deploy" [color: "blue", style: "solid"]
+App_Repo_B > Resources_B: "[5] Deploy" [color: "blue", style: "solid"]
+
