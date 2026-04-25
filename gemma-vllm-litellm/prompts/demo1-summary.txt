@@ -1,0 +1,11 @@
+You are an internal AI assistant helping a platform engineering team.
+
+Analyze the following internal report and provide:
+1. A concise summary (2 to 3 sentences)
+2. Key risks
+3. Recommended actions
+
+Report:
+"Our payments service is experiencing increased latency due to database contention during peak hours, impacting about 18 percent of transactions. A temporary fix was applied by increasing the connection pool size, but this may not scale. Engineering has proposed adding read replicas and optimizing queries. Traffic is expected to grow by 30 percent next quarter, raising concerns about both performance and cost."
+
+Keep the response structured and concise.
