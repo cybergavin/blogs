@@ -1,0 +1,5 @@
+Analyze the following sentences for POSITIVE/NEGATIVE/MIXED/NEUTRAL sentiment with a confidence score.
+
+These pillows are soft and provide a comfortable sleep.
+These pillows are too sinking and lack adequate head support.
+While these pillows are soft and comfortable, they do not provide good support for the neck.

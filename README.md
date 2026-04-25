@@ -1,40 +1,26 @@
-## Blog Artifacts
+# Blog Artifacts
 
-This repository stores supporting artifacts for my blog posts. These include code snippets, scripts, and diagrams referenced in the posts.
+This repository contains supporting artifacts for my blog posts, including:
 
-### 📂 Repository Structure
-```
-.
-├── diagrams/   # Diagrams and visual assets (PNG, SVG, etc.)
-└── code/       # Code snippets, scripts, or diagram source code
-```
+- Architecture diagrams
+- Setup instructions
+- Code snippets
+- Prompts and examples
 
-### 🏷️ Naming Convention
+Each folder corresponds to a single post and is self-contained.
 
-- All artifacts are named using a short slug derived from the blog post title.
-- This ensures each artifact can be traced back to its corresponding blog post.
-- The same slug is used across both diagrams/ and code/.
+---
 
-#### Example:
-```
-diagrams/
-  ecs-automation-arch.png
-code/
-  ecs-automation-snippets.py
-  ecs-automation-diagram-source.puml
-```
-Here, `ecs-automation` is the slug for the blog post "Automating ECS Deployments".
+## Posts
 
-### 🔗 Usage
+### Private LLM with vLLM and LiteLLM
+Artifacts for running a private Gemma 4 model on EC2 and integrating it with an AI Gateway.
 
-- Each blog post will reference its slugged artifacts from this repository.
-- To explore or reuse code and diagrams:
+👉 https://github.com/cybergavin/blogs/tree/main/gemma-vllm-litellm
 
-```
-git clone https://github.com/cybergavin/blogs.git
-```
-- Look in the `diagrams/` or `code/` folders using the slug for the relevant post.
+---
 
-### 📝 Notes
+### AWS Deployments with GitHub OIDC and OpenTofu
+Artifacts related to deploying services to AWS using GitHub OIDC and OpenTofu.
 
-- Some code files may include inline comments or requirements for reproduction.
+👉 https://github.com/cybergavin/blogs/tree/main/aws-oidc-opentofu-deployments
