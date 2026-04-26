@@ -2,7 +2,7 @@
 
 This folder contains artifacts for the blog post:
 
-👉 [Medium Post Link Here]
+👉 [Running a Private 26B LLM on a Single GPU with vLLM and an AI Gateway](https://medium.com/@cybergavin/running-a-private-26b-llm-on-a-single-gpu-with-vllm-and-an-ai-gateway-ed68708988d9)
 
 ---
 
